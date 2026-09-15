@@ -1,277 +1,263 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Noxis</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<title>Noxis</title>
 
-    body {
-      min-height: 100vh;
-      font-family: Arial, Helvetica, sans-serif;
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #080808;
-      overflow: hidden;
-    }
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    /* FOND */
+body {
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: #080808;
+}
 
-    .background {
-      position: fixed;
-      inset: 0;
-      z-index: -2;
-      background-image: url("https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1920&q=80");
-      background-size: cover;
-      background-position: center;
-      filter: blur(3px);
-      transform: scale(1.05);
-    }
+/* FOND */
+.background {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+    url("https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1920&q=80");
+  background-size: cover;
+  background-position: center;
+  filter: blur(3px);
+  transform: scale(1.05);
+}
 
-    .background::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.65);
-    }
+/* PETITS POINTS */
+.particles {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.25) 1px, transparent 1px);
+  background-size: 45px 45px;
+  opacity: 0.25;
+}
 
-    /* PARTICULES */
+/* CARTE */
+.card {
+  width: 430px;
+  max-width: 90%;
+  padding: 40px 32px 28px;
+  text-align: center;
 
-    .particles {
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      pointer-events: none;
-      background-image:
-        radial-gradient(circle, rgba(255,255,255,0.25) 1px, transparent 1px);
-      background-size: 45px 45px;
-      opacity: 0.25;
-    }
+  background: rgba(18,18,18,0.75);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 22px;
 
-    /* CARTE */
+  box-shadow:
+    0 25px 80px rgba(0,0,0,0.7),
+    inset 0 0 30px rgba(255,255,255,0.03);
 
-    .card {
-      width: 430px;
-      max-width: 90%;
-      padding: 40px 32px 28px;
-      text-align: center;
+  backdrop-filter: blur(18px);
 
-      background: rgba(18, 18, 18, 0.72);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 22px;
+  animation: appear 0.8s ease;
+}
 
-      box-shadow:
-        0 25px 80px rgba(0,0,0,0.7),
-        inset 0 0 30px rgba(255,255,255,0.03);
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.96);
+  }
 
-      backdrop-filter: blur(18px);
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
 
-      animation: appear 0.8s ease;
-    }
+/* PHOTO DE PROFIL */
+.avatar {
+  width: 105px;
+  height: 105px;
 
-    @keyframes appear {
-      from {
-        opacity: 0;
-        transform: translateY(20px) scale(0.96);
-      }
+  margin: 0 auto 18px;
 
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-    }
+  border-radius: 50%;
 
-    /* PHOTO / AVATAR */
-
-    .avatar {
-      width: 105px;
-      height: 105px;
-      margin: 0 auto 18px;
-
-      border-radius: 50%;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      font-size: 42px;
-      font-weight: bold;
-
-      background: linear-gradient(135deg, #444, #111);
-
-      border: 3px solid rgba(255,255,255,0.85);
-
-      box-shadow:
-        0 0 30px rgba(255,255,255,0.15);
-
-      animation: float 4s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(-5px);
-      }
-    }
-
-    /* NOM */
-
-    h1 {
-      font-size: 35px;
-      letter-spacing: 1px;
-      margin-bottom: 8px;
-    }
-
-    /* DESCRIPTION */
-
-    .bio {
-      color: rgba(255,255,255,0.65);
-      font-size: 14px;
-      margin-bottom: 22px;
-    }
-
-    /* DISCORD */
-
-    .discord {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 42px;
-  height: 42px;
-  margin: 18px auto;
-  border-radius: 10px;
+
+  font-size: 42px;
+  font-weight: bold;
+
+  background: linear-gradient(135deg, #444, #111);
+
+  border: 3px solid rgba(255,255,255,0.85);
+
+  box-shadow:
+    0 0 30px rgba(255,255,255,0.15);
+
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* NOM */
+h1 {
+  font-size: 35px;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+/* BIO */
+.bio {
+  color: rgba(255,255,255,0.65);
+  font-size: 14px;
+  margin-bottom: 22px;
+}
+
+/* BOUTON DISCORD */
+.discord {
+  width: 50px;
+  height: 50px;
+
+  margin: 20px auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 13px;
+
   background: #5865F2;
+
   text-decoration: none;
-  transition: 0.2s;
+
+  box-shadow:
+    0 8px 25px rgba(88,101,242,0.35);
+
+  transition: 0.25s;
 }
 
 .discord:hover {
-  transform: scale(1.08);
-  background: #4752c4;
+  transform: translateY(-4px) scale(1.08);
+
+  box-shadow:
+    0 12px 35px rgba(88,101,242,0.55);
 }
-    
 
-      width: 58px;
-      height: 58px;
+/* VUES */
+.views {
+  color: rgba(255,255,255,0.5);
+  font-size: 13px;
+  margin-top: 8px;
+}
 
-      margin: 20px auto;
+/* FOOTER */
+.footer {
+  margin-top: 18px;
+  color: rgba(255,255,255,0.25);
+  font-size: 11px;
+}
 
-      border-radius: 16px;
+/* MOBILE */
+@media (max-width: 500px) {
 
-      background: #5865F2;
-      color: white;
+  .card {
+    padding: 30px 22px 22px;
+  }
 
-      text-decoration: none;
+  h1 {
+    font-size: 30px;
+  }
 
-      font-size: 27px;
-
-      box-shadow: 0 8px 25px rgba(88,101,242,0.35);
-
-      transition: 0.25s;
-    }
-
-    .discord:hover {
-      transform: translateY(-4px) scale(1.08);
-      box-shadow: 0 12px 35px rgba(88,101,242,0.5);
-    }
-
-    /* VUES */
-
-    .views {
-      color: rgba(255,255,255,0.5);
-      font-size: 13px;
-      margin-top: 8px;
-    }
-
-    /* FOOTER */
-
-    .footer {
-      margin-top: 18px;
-      color: rgba(255,255,255,0.25);
-      font-size: 11px;
-    }
-
-    /* MOBILE */
-
-    @media (max-width: 500px) {
-      .card {
-        padding: 30px 22px 22px;
-      }
-
-      h1 {
-        font-size: 30px;
-      }
-
-      .avatar {
-        width: 90px;
-        height: 90px;
-      }
-    }
-  </style>
+  .avatar {
+    width: 90px;
+    height: 90px;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <div class="background"></div>
-  <div class="particles"></div>
+<div class="background"></div>
+<div class="particles"></div>
 
-  <main class="card">
+<main class="card">
 
-    <div class="avatar">
-      N
-    </div>
+  <div class="avatar">
+    N
+  </div>
 
-    <h1>Noxis</h1>
+  <h1>Noxis</h1>
 
-    <p class="bio">
-      discret mais jamais invisible
-    </p>
+  <p class="bio">
+    discret mais jamais invisible
+  </p>
 
-    <a
-  class="discord"
-  href="https://discord.gg/t432abMpV"
-  target="_blank"
-  title="Discord"
->
-  <svg viewBox="0 0 24 24" width="25" height="25" fill="white">
-    <path d="M19.54 0c1.18 0 2.13.95 2.13 2.13v19.74c0 1.18-.95 2.13-2.13 2.13H4.46a2.13 2.13 0 0 1-2.13-2.13V2.13C2.33.95 3.28 0 4.46 0h15.08zM8.08 15.1c-.65 0-1.18-.59-1.18-1.32s.53-1.32 1.18-1.32 1.18.59 1.18 1.32-.53 1.32-1.18 1.32zm7.84 0c-.65 0-1.18-.59-1.18-1.32s.53-1.32 1.18-1.32 1.18.59 1.18 1.32-.53 1.32-1.18 1.32z"/>
-  </svg>
-</a>
+  <!-- DISCORD -->
+  <a
+    class="discord"
+    href="https://discord.gg/t432abMpV"
+    target="_blank"
+    title="Discord"
+  >
 
-    <div class="views">
-      👁 <span id="views">1</span> vues
-    </div>
+    <svg
+      viewBox="0 0 127.14 96.36"
+      width="27"
+      height="27"
+      fill="white"
+    >
 
-    <div class="footer">
-      noxis
-    </div>
+      <path d="M107.7 8.07A105.15 105.15 0 0 0 81.47 0l-3.2 6.49a97.68 97.68 0 0 0-29.39 0L45.68 0a105.89 105.89 0 0 0-26.27 8.09C2.8 32.65-1.7 56.6.55 80.21a105.73 105.73 0 0 0 32.31 16.15l7.82-10.72a67.28 67.28 0 0 1-12.34-5.88l3.02-2.34a75.42 75.42 0 0 0 65.94 0l3.03 2.34a68.68 68.68 0 0 1-12.36 5.89l7.81 10.71a105.54 105.54 0 0 0 32.32-16.15c2.61-27.38-4.47-51.1-20.4-72.14ZM42.45 65.69c-6.42 0-11.73-5.87-11.73-13.08s5.2-13.08 11.73-13.08 11.83 5.87 11.73 13.08c.1 7.21-5.2 13.08-11.73 13.08Zm42.24 0c-6.42 0-11.73-5.87-11.73-13.08s5.2-13.08 11.73-13.08 11.83 5.87 11.73 13.08c.1 7.21-5.2 13.08-11.73 13.08Z"/>
 
-  </main>
+    </svg>
 
-  <script>
-    let views = localStorage.getItem("noxisViews");
+  </a>
 
-    if (!views) {
-      views = 1;
-    } else {
-      views = Number(views) + 1;
-    }
+  <div class="views">
+    👁 <span id="views">1</span> vues
+  </div>
 
-    localStorage.setItem("noxisViews", views);
+  <div class="footer">
+    noxis
+  </div>
 
-    document.getElementById("views").textContent = views;
-  </script>
+</main>
+
+<script>
+
+let views = localStorage.getItem("noxisViews");
+
+if (!views) {
+  views = 1;
+} else {
+  views = Number(views) + 1;
+}
+
+localStorage.setItem("noxisViews", views);
+
+document.getElementById("views").textContent = views;
+
+</script>
 
 </body>
 </html>
