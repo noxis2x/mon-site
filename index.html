@@ -144,9 +144,23 @@
     /* DISCORD */
 
     .discord {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  margin: 18px auto;
+  border-radius: 10px;
+  background: #5865F2;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.discord:hover {
+  transform: scale(1.08);
+  background: #4752c4;
+}
+    
 
       width: 58px;
       height: 58px;
@@ -225,13 +239,15 @@
     </p>
 
     <a
-      class="discord"
-      href="https://discord.gg/t432abMpV"
-      target="_blank"
-      title="Discord"
-    >
-      💬
-    </a>
+  class="discord"
+  href="https://discord.gg/t432abMpV"
+  target="_blank"
+  title="Discord"
+>
+  <svg viewBox="0 0 24 24" width="25" height="25" fill="white">
+    <path d="M19.54 0c1.18 0 2.13.95 2.13 2.13v19.74c0 1.18-.95 2.13-2.13 2.13H4.46a2.13 2.13 0 0 1-2.13-2.13V2.13C2.33.95 3.28 0 4.46 0h15.08zM8.08 15.1c-.65 0-1.18-.59-1.18-1.32s.53-1.32 1.18-1.32 1.18.59 1.18 1.32-.53 1.32-1.18 1.32zm7.84 0c-.65 0-1.18-.59-1.18-1.32s.53-1.32 1.18-1.32 1.18.59 1.18 1.32-.53 1.32-1.18 1.32z"/>
+  </svg>
+</a>
 
     <div class="views">
       👁 <span id="views">1</span> vues
